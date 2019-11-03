@@ -10,7 +10,7 @@ The back-end is built with Python Django, and the front-end is built with React.
 npm install
 
 # Serve API on localhost:8000
-python leadmanager/manage.py runserver
+python shipment-manager/manage.py runserver
 
 # Run webpack (from root)
 npm run dev
