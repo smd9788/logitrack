@@ -1,5 +1,5 @@
 from django.db import models
-from localflavor.us.models import USStateField, USPostalCodeField
+from localflavor.us.models import USStateField, USZipCodeField
 
 class Customer(models.Model):
     # choices
@@ -9,7 +9,7 @@ class Customer(models.Model):
     street = models.TextField(max_length=100, blank=False)
     city = models.TextField(max_length=100, blank=False)
     state = USStateField(blank=False)
-    postal_code = USPostalCodeField(blank=False)
+    zip_code = USZipCodeField(blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     # Meta
