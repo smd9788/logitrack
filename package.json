@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./shipment_manager/client/src/index.js --output ./shipment_manager/client/static/client/bundle.js",
+    "dev": "webpack --mode development --watch ./shipment_manager/client/src/index.js --output ./shipment_manager/client/static/client/bundle.js",
     "build": "webpack --mode production ./shipment_manager/client/src/index.js --output ./shipment_manager/client/static/client/bundle.js"
   },
   "repository": {
