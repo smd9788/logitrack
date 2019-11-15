@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./shipment_manager/client/src/index.js --output ./shipment_manager/client/static/client/main.js",
-    "build": "webpack --mode production ./shipment_manager/client/src/index.js --output ./shipment_manager/client/static/client/main.js"
+    "dev": "webpack --mode development ./shipment_manager/client/src/index.js --output ./shipment_manager/client/static/client/bundle.js",
+    "build": "webpack --mode production ./shipment_manager/client/src/index.js --output ./shipment_manager/client/static/client/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -23,12 +23,18 @@
     "@babel/preset-react": "^7.7.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
+    "style-loader": "^1.0.0",
+    "url-loader": "^2.2.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
+    "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.11.0"
   }
 }
