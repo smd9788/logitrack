@@ -6,7 +6,9 @@ import { getCustomers, deleteCustomer } from "../../actions/customers";
 
 export class Customers extends Component {
   static PropTypes = {
-    customers: PropTypes.array.isRequired
+    customers: PropTypes.array.isRequired,
+    getCustomers: PropTypes.func.isRequired,
+    deleteCustomer: PropTypes.func.isRequired
   };
 
   componentDidMount() {
