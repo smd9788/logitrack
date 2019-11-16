@@ -24,6 +24,13 @@ export class Form extends Component {
     const { name, street, city, state, zip_code } = this.state;
     const customer = { name, street, city, state, zip_code };
     this.props.addCustomer(customer);
+    this.setState({
+      name: "",
+      street: "",
+      city: "",
+      state: "",
+      zip_code: ""
+    });
   };
 
   render() {
