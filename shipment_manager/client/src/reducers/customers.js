@@ -1,4 +1,4 @@
-import { GET_CUSTOMERS } from "../actions/types.js";
+import { GET_CUSTOMERS, DELETE_CUSTOMER } from "../actions/types.js";
 
 const initialState = {
   customers: []
@@ -10,6 +10,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         customers: action.payload
+      };
+    case DELETE_CUSTOMER:
+      return {
+        ...state,
+        customers: state.customers.filter(
+          customer => customer.id !== action.payload
+        )
       };
     default:
       return state;
