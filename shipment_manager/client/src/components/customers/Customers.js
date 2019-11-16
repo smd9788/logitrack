@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { getCustomers, deleteCustomer } from "../../actions/customers";
 
 export class Customers extends Component {
-  static PropTypes = {
+  static propTypes = {
     customers: PropTypes.array.isRequired,
     getCustomers: PropTypes.func.isRequired,
     deleteCustomer: PropTypes.func.isRequired
@@ -24,6 +24,7 @@ export class Customers extends Component {
             <tr>
               <th>ID</th>
               <th>Name</th>
+              <th>Street</th>
               <th>City</th>
               <th>State</th>
               <th>Zip Code</th>
@@ -34,6 +35,7 @@ export class Customers extends Component {
               <tr key={customer.id}>
                 <td>{customer.id}</td>
                 <td>{customer.name}</td>
+                <td>{customer.street}</td>
                 <td>{customer.city}</td>
                 <td>{customer.state}</td>
                 <td>{customer.zip_code}</td>
@@ -55,7 +57,7 @@ export class Customers extends Component {
 }
 
 const mapStateToProps = state => ({
-  customers: state.customerReducer.customers
+  customers: state.customers.customers
 });
 
 export default connect(mapStateToProps, { getCustomers, deleteCustomer })(

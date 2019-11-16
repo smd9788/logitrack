@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GET_CUSTOMERS, DELETE_CUSTOMER } from "./types";
+import { GET_CUSTOMERS, DELETE_CUSTOMER, ADD_CUSTOMER } from "./types";
 
 // GET CUSTOMERS
 export const getCustomers = () => dispatch => {
@@ -23,6 +23,19 @@ export const deleteCustomer = id => dispatch => {
       dispatch({
         type: DELETE_CUSTOMER,
         payload: id
+      });
+    })
+    .catch(err => console.log(err));
+};
+
+// ADD CUSTOMER
+export const addCustomer = customer => dispatch => {
+  axios
+    .post("/api/customers/", customer)
+    .then(res => {
+      dispatch({
+        type: ADD_CUSTOMER,
+        payload: res.data
       });
     })
     .catch(err => console.log(err));

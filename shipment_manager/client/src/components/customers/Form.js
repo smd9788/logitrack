@@ -1,13 +1,96 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { addCustomer } from "../../actions/customers";
 
 export class Form extends Component {
+  state = {
+    name: "",
+    street: "",
+    city: "",
+    state: "",
+    zip_code: ""
+  };
+
+  static propTypes = {
+    addCustomer: PropTypes.func.isRequired
+  };
+
+  onChange = event =>
+    this.setState({ [event.target.name]: event.target.value });
+
+  onSubmit = event => {
+    event.preventDefault();
+    const { name, street, city, state, zip_code } = this.state;
+    const customer = { name, street, city, state, zip_code };
+    this.props.addCustomer(customer);
+  };
+
   render() {
+    const { name, street, city, state, zip_code } = this.state;
     return (
-      <div>
-        <h1>Add Customer Form</h1>
+      <div className="card card-body mt-4 mb-4">
+        <h2>Add Customer</h2>
+        <form onSubmit={this.onSubmit}>
+          <div className="form-group">
+            <label>Name</label>
+            <input
+              className="form-control"
+              type="text"
+              name="name"
+              onChange={this.onChange}
+              value={name}
+            />
+          </div>
+          <div className="form-group">
+            <label>Street Address</label>
+            <input
+              className="form-control"
+              type="text"
+              name="street"
+              onChange={this.onChange}
+              value={street}
+            />
+          </div>
+          <div className="form-group">
+            <label>City</label>
+            <input
+              className="form-control"
+              type="city"
+              name="city"
+              onChange={this.onChange}
+              value={city}
+            />
+          </div>
+          <div className="form-group">
+            <label>State</label>
+            <textarea
+              className="form-control"
+              type="text"
+              name="state"
+              onChange={this.onChange}
+              value={state}
+            />
+          </div>
+          <div className="form-group">
+            <label>Zip Code</label>
+            <textarea
+              className="form-control"
+              type="text"
+              name="zip_code"
+              onChange={this.onChange}
+              value={zip_code}
+            />
+          </div>
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
     );
   }
 }
 
-export default Form;
+export default connect(null, { addCustomer })(Form);
