@@ -8,7 +8,7 @@ export class Form extends Component {
     name: "",
     street: "",
     city: "",
-    state: "",
+    us_state: "",
     zip_code: ""
   };
 
@@ -21,20 +21,20 @@ export class Form extends Component {
 
   onSubmit = event => {
     event.preventDefault();
-    const { name, street, city, state, zip_code } = this.state;
-    const customer = { name, street, city, state, zip_code };
+    const { name, street, city, us_state, zip_code } = this.state;
+    const customer = { name, street, city, us_state, zip_code };
     this.props.addCustomer(customer);
     this.setState({
       name: "",
       street: "",
       city: "",
-      state: "",
+      us_state: "",
       zip_code: ""
     });
   };
 
   render() {
-    const { name, street, city, state, zip_code } = this.state;
+    const { name, street, city, us_state, zip_code } = this.state;
     return (
       <div className="card card-body mt-4 mb-4">
         <h2>Add Customer</h2>
@@ -74,9 +74,9 @@ export class Form extends Component {
             <textarea
               className="form-control"
               type="text"
-              name="state"
+              name="us_state"
               onChange={this.onChange}
-              value={state}
+              value={us_state}
             />
           </div>
           <div className="form-group">

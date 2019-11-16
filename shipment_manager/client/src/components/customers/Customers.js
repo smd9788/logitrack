@@ -37,7 +37,7 @@ export class Customers extends Component {
                 <td>{customer.name}</td>
                 <td>{customer.street}</td>
                 <td>{customer.city}</td>
-                <td>{customer.state}</td>
+                <td>{customer.us_state}</td>
                 <td>{customer.zip_code}</td>
                 <td>
                   <button
