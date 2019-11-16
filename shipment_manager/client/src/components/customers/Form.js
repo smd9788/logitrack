@@ -63,7 +63,7 @@ export class Form extends Component {
             <label>City</label>
             <input
               className="form-control"
-              type="city"
+              type="text"
               name="city"
               onChange={this.onChange}
               value={city}
