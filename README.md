@@ -3,14 +3,41 @@ LogiTrack is a transportation/shipping management tool that allows users to crea
 
 The back-end is built with Python Django, and the front-end is built with React.
 
-## Quick Start
+## Tools required
+* Node.js
+* Python3
+* pipenv
+* PostgreSQL
+
+## Quick Start 
+#### (YOU WILL NEED TO CONFIGURE POSTGRESQL BEFORE STARTING)
+
+* Create a local Postgres database with a user (password optional), and update the database default config in settings.py (/shipment_manager/shipment_manager/settings.py). code to edit below
+
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'logitrack',
+        'USER': 'replaceWithYourPSQLUsername',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '5432',
+    }
+}
+```
+
 
 ```bash
+# Start python virtual environment
+pipenv shell
+
 # Install dependencies
 npm install
+pip3 install
 
 # Serve API on localhost:8000
-python shipment-manager/manage.py runserver
+python3 shipment_manager/manage.py runserver
 
 # Run webpack (from root)
 npm run dev
