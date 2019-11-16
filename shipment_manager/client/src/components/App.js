@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import store from "../store";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -9,12 +11,12 @@ import Dashboard from "./customers/Dashboard";
 class App extends Component {
   render() {
     return (
-      <Fragment>
+      <Provider store={store}>
         <Header />
         <div className="container">
           <Dashboard />
         </div>
-      </Fragment>
+      </Provider>
     );
   }
 }

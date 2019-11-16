@@ -1,13 +1,54 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
+import { getCustomers } from "../../actions/customers";
 
 export class Customers extends Component {
+  static PropTypes = {
+    customers: PropTypes.array.isRequired
+  };
+
+  componentDidMount() {
+    this.props.getCustomers();
+  }
+
   render() {
     return (
-      <div>
-        <h1>Customer List</h1>
-      </div>
+      <Fragment>
+        <h2>Customers</h2>
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Zip Code</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.customers.map(customer => (
+              <tr key={customer.id}>
+                <td>{customer.id}</td>
+                <td>{customer.name}</td>
+                <td>{customer.city}</td>
+                <td>{customer.state}</td>
+                <td>{customer.zip_code}</td>
+                <td>
+                  <button className="btn btn-danger btn-sm">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Fragment>
     );
   }
 }
 
-export default Customers;
+const mapStateToProps = state => ({
+  customers: state.customerReducer.customers
+});
+
+export default connect(mapStateToProps, { getCustomers })(Customers);
