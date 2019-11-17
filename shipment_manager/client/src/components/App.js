@@ -18,6 +18,7 @@ import Dashboard from "./customers/Dashboard";
 import Alerts from "./layout/Alerts";
 import Login from "./accounts/Login";
 import Register from "./accounts/Register";
+import PrivateRoute from "./common/PrivateRoute";
 
 // Alert Options
 const alertOptions = {
@@ -36,7 +37,7 @@ class App extends Component {
               <Alerts />
               <div className="container">
                 <Switch>
-                  <Route exact path="/" component={Dashboard} />
+                  <PrivateRoute exact path="/" component={Dashboard} />
                 </Switch>
                 <Switch>
                   <Route exact path="/register" component={Register} />
