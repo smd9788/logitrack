@@ -3,9 +3,17 @@ from customers.models import Customer
 from .serializers import CustomerSerializer
 
 # Lead Viewset
+
+
 class CustomerViewSet(viewsets.ModelViewSet):
-    queryset = Customer.objects.all()
     permission_classes = [
-        permissions.AllowAny
+        permissions.IsAuthenticated
     ]
+
     serializer_class = CustomerSerializer
+
+    def get_queryset(self):
+        return self.request.user.customers.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)

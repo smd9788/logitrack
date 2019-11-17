@@ -1,12 +1,7 @@
 import axios from "axios";
-import { createMessage } from "./messages";
+import { createMessage, returnErrors } from "./messages";
 
-import {
-  GET_CUSTOMERS,
-  DELETE_CUSTOMER,
-  ADD_CUSTOMER,
-  GET_ERRORS
-} from "./types";
+import { GET_CUSTOMERS, DELETE_CUSTOMER, ADD_CUSTOMER } from "./types";
 
 // GET CUSTOMERS
 export const getCustomers = () => dispatch => {
@@ -18,7 +13,9 @@ export const getCustomers = () => dispatch => {
         payload: res.data
       });
     })
-    .catch(err => console.log(err));
+    .catch(err =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 // DELETE CUSTOMER
@@ -46,14 +43,7 @@ export const addCustomer = customer => dispatch => {
         payload: res.data
       });
     })
-    .catch(err => {
-      const errors = {
-        msg: err.response.data,
-        status: err.response.status
-      };
-      dispatch({
-        type: GET_ERRORS,
-        payload: errors
-      });
-    });
+    .catch(err =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
