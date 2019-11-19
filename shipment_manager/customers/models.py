@@ -7,7 +7,7 @@ class Customer(models.Model):
     # choices
 
     # database fields
-    name = models.CharField(max_length=100, blank=False, unique=True)
+    name = models.CharField(max_length=100, blank=False)
     street = models.TextField(max_length=100, blank=False)
     city = models.TextField(max_length=100, blank=False)
     us_state = USStateField(blank=False)

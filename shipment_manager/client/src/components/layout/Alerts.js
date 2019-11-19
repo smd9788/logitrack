@@ -27,6 +27,12 @@ export class Alerts extends Component {
       if (error.msg.zip_code) {
         alert.error(`Zip Code: ${error.msg.zip_code.join()}`);
       }
+      if (error.msg.non_field_errors) {
+        alert.error(error.msg.non_field_errors.join());
+      }
+      if (error.msg.username) {
+        alert.error(error.msg.username.join());
+      }
     }
     if (message !== prevProps.message) {
       if (message.deleteCustomer) {
@@ -34,6 +40,9 @@ export class Alerts extends Component {
       }
       if (message.addCustomer) {
         alert.success(message.addCustomer);
+      }
+      if (message.passwordsNotMatch) {
+        alert.error(message.passwordsNotMatch);
       }
     }
   }
