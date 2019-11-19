@@ -1,7 +1,8 @@
 import {
   GET_CUSTOMERS,
   DELETE_CUSTOMER,
-  ADD_CUSTOMER
+  ADD_CUSTOMER,
+  LOGOUT_SUCCESS
 } from "../actions/types.js";
 
 const initialState = {
@@ -26,6 +27,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         customers: [...state.customers, action.payload]
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        customers: []
       };
     default:
       return state;
