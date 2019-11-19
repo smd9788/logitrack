@@ -20,17 +20,25 @@ export class Register extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    const { password, password_confirmation } = this.state;
+    const { username, email, password, password_confirmation } = this.state;
     if (password !== password_confirmation) {
       this.props.createMessage({ passwordsNotMatch: "Passwords do not match" });
     } else {
-      console.log("submit");
+      const newUser = {
+        username,
+        password,
+        email
+      };
+      this.props.register(newUser);
     }
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
+    if (this.props.isAuthenticated) {
+      return <Redirect to="/" />;
+    }
     const { username, email, password, password_confirmation } = this.state;
     return (
       <div className="col-md-6 m-auto">
