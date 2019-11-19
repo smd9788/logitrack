@@ -38,6 +38,9 @@ export class Alerts extends Component {
       if (message.addCustomer) {
         alert.success(message.addCustomer);
       }
+      if (message.passwordsNotMatch) {
+        alert.error(message.passwordsNotMatch);
+      }
     }
   }
 
