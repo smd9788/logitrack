@@ -1,12 +1,13 @@
 import axios from "axios";
 import { createMessage, returnErrors } from "./messages";
+import { tokenConfig } from "./auth";
 
 import { GET_CUSTOMERS, DELETE_CUSTOMER, ADD_CUSTOMER } from "./types";
 
 // GET CUSTOMERS
-export const getCustomers = () => dispatch => {
+export const getCustomers = () => (dispatch, getState) => {
   axios
-    .get("/api/customers/")
+    .get("/api/customers/", tokenConfig(getState))
     .then(res => {
       dispatch({
         type: GET_CUSTOMERS,
@@ -19,9 +20,9 @@ export const getCustomers = () => dispatch => {
 };
 
 // DELETE CUSTOMER
-export const deleteCustomer = id => dispatch => {
+export const deleteCustomer = id => (dispatch, getState) => {
   axios
-    .delete(`/api/customers/${id}/`)
+    .delete(`/api/customers/${id}/`, tokenConfig(getState))
     .then(res => {
       dispatch(createMessage({ deleteCustomer: "Customer Deleted" }));
       dispatch({
@@ -33,9 +34,9 @@ export const deleteCustomer = id => dispatch => {
 };
 
 // ADD CUSTOMER
-export const addCustomer = customer => dispatch => {
+export const addCustomer = customer => (dispatch, getState) => {
   axios
-    .post("/api/customers/", customer)
+    .post("/api/customers/", customer, tokenConfig(getState))
     .then(res => {
       dispatch(createMessage({ addCustomer: "Customer Added Successfully" }));
       dispatch({
